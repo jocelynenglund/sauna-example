@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bastu · tonight</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Bastu</h1>
+    <p class="sub">The sauna example, running. Every button calls one slice from <code>slices/</code> with the event history, and the history below is all that's stored.</p>
+  </header>
+
+  <section>
+    <h2>Tonight</h2>
+    <p class="label">Free slots <span class="slice">freeSlots</span></p>
+    <ul id="free" class="chips"></ul>
+    <form id="book" class="row">
+      <input name="name" placeholder="Your name" required maxlength="30">
+      <select name="slot">
+        <option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option>
+      </select>
+      <button>Book <span class="slice">bookSlot</span></button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Sauna settings</h2>
+    <form id="capacity" class="row">
+      <label>People per hour <input name="perSlot" type="number" value="2" step="1"></label>
+      <button>Set <span class="slice">setCapacity</span></button>
+    </form>
+  </section>
+
+  <p id="result" role="status"></p>
+
+  <section>
+    <h2>Event history <button id="reset" class="link">Start over</button></h2>
+    <ol id="history"></ol>
+  </section>
+
+  <footer>Code and tests: <a href="https://github.com/jocelynenglund/sauna-example">github.com/jocelynenglund/sauna-example</a> · The model: <a href="https://eventbook.itsybit.se/?m=27JSC1umsc">build book in Event Book</a></footer>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
