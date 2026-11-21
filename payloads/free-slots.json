@@ -1,0 +1,30 @@
+{
+  "slice": "Free slots tonight",
+  "type": "view",
+  "chapter": "Book the sauna",
+  "model": "haiku",
+  "view": { "name": "freeSlots", "fields": ["slots[]"] },
+  "reads": ["CapacitySet", "SlotBooked"],
+  "scenarios": [
+    {
+      "name": "All four hours are free at first",
+      "given": [],
+      "then": { "slots": ["17:00", "18:00", "19:00", "20:00"] }
+    },
+    {
+      "name": "A full hour is no longer free",
+      "given": [
+        { "CapacitySet": { "perSlot": 2 } },
+        { "SlotBooked": { "slot": "18:00", "name": "Ada" } },
+        { "SlotBooked": { "slot": "18:00", "name": "Linus" } }
+      ],
+      "then": { "slots": ["17:00", "19:00", "20:00"] }
+    }
+  ],
+  "copy": "slices/set-capacity/",
+  "files": [
+    "slices/free-slots/freeSlots.js",
+    "slices/free-slots/freeSlots.test.mjs"
+  ],
+  "task": "Make these scenarios pass. Change only this slice's files."
+}

@@ -1,0 +1,42 @@
+{
+  "slice": "Book a slot",
+  "type": "command",
+  "chapter": "Book the sauna",
+  "model": "haiku",
+  "command": { "name": "BookSlot", "fields": ["slot", "name"] },
+  "event": { "name": "SlotBooked", "fields": ["slot", "name"] },
+  "reads": ["CapacitySet", "SlotBooked"],
+  "scenarios": [
+    {
+      "name": "Books a free slot",
+      "given": [],
+      "when": { "BookSlot": { "slot": "18:00", "name": "Jocelyn" } },
+      "then": [
+        { "SlotBooked": { "slot": "18:00", "name": "Jocelyn" } }
+      ]
+    },
+    {
+      "name": "Two can share an hour when capacity is two",
+      "given": [
+        { "CapacitySet": { "perSlot": 2 } },
+        { "SlotBooked": { "slot": "18:00", "name": "Ada" } }
+      ],
+      "when": { "BookSlot": { "slot": "18:00", "name": "Jocelyn" } },
+      "then": [
+        { "SlotBooked": { "slot": "18:00", "name": "Jocelyn" } }
+      ]
+    },
+    {
+      "name": "Refuses a full hour",
+      "given": [{ "SlotBooked": { "slot": "18:00", "name": "Ada" } }],
+      "when": { "BookSlot": { "slot": "18:00", "name": "Jocelyn" } },
+      "rejected": "18:00 is full"
+    }
+  ],
+  "copy": "slices/set-capacity/",
+  "files": [
+    "slices/book-a-slot/bookSlot.js",
+    "slices/book-a-slot/bookSlot.test.mjs"
+  ],
+  "task": "Make these scenarios pass. Change only this slice's files."
+}

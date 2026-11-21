@@ -1,0 +1,28 @@
+{
+  "slice": "Set capacity",
+  "type": "command",
+  "chapter": "Book the sauna",
+  "model": "sonnet",
+  "why": "first slice: it sets the pattern the others copy",
+  "command": { "name": "SetCapacity", "fields": ["perSlot"] },
+  "event": { "name": "CapacitySet", "fields": ["perSlot"] },
+  "scenarios": [
+    {
+      "name": "Sets how many may share an hour",
+      "given": [],
+      "when": { "SetCapacity": { "perSlot": 2 } },
+      "then": [{ "CapacitySet": { "perSlot": 2 } }]
+    },
+    {
+      "name": "Refuses less than one",
+      "given": [],
+      "when": { "SetCapacity": { "perSlot": 0 } },
+      "rejected": "capacity must be at least 1"
+    }
+  ],
+  "files": [
+    "slices/set-capacity/setCapacity.js",
+    "slices/set-capacity/setCapacity.test.mjs"
+  ],
+  "task": "Write the spec first, see it fail, then make it pass."
+}
