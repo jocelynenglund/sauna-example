@@ -24,3 +24,4 @@ button.link{background:none;color:var(--muted);font-weight:400;text-decoration:u
 #result.rejected{color:var(--red)}
 footer{font-size:14px}
 a{color:inherit}
+.note{color:var(--muted);font-size:14px;margin:10px 0 0}
