@@ -24,6 +24,6 @@ npm test     # the 7 Given/When/Then scenarios
 npm start    # the bastu page on http://localhost:8080
 ```
 
-Or try it live: https://jocelynenglund.github.io/sauna-example/
+Or try it live: https://prototype.itsybit.se/bastu/
 
 The page (`index.html`, `app.js`) only wires buttons to the slices: Book calls `bookSlot`, Set calls `setCapacity`, the free slots are `freeSlots`. Each call gets the event history; a refusal is shown, an accepted command appends its events. The history is kept in your browser and listed at the bottom, so you can see that it's all that's stored.
