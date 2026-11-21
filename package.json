@@ -3,6 +3,11 @@
   "private": true,
   "type": "module",
   "description": "The smallest Event Book example: book a sauna slot, see the free ones.",
-  "scripts": { "test": "node --test \"slices/**/*.test.mjs\"" },
-  "devDependencies": { "itsybit-gwt": "0.2.1" }
+  "scripts": {
+    "test": "node --test \"slices/**/*.test.mjs\"",
+    "start": "node serve.mjs"
+  },
+  "devDependencies": {
+    "itsybit-gwt": "0.2.1"
+  }
 }
